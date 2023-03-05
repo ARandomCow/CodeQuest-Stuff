@@ -1,13 +1,14 @@
 package Algos.Lists;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
 public class stringListAlgos {
 
     // Generates all permutations -- EXAMPLE IN listAlgoTesting.java
-    public static void permutations(Set<String> items, Stack<String> permutation, int size) {
+    public static void permutations(List<String> items, List<String> permutation, int size) {
 
         /* permutation stack has become equal to size that we require */
         if(permutation.size() == size) {
@@ -19,7 +20,7 @@ public class stringListAlgos {
         String[] availableItems = items.toArray(new String[0]);
         for(String s : availableItems) {
             /* add current item */
-            permutation.push(s);
+            permutation.add(s);
 
             /* remove item from available item set */
             items.remove(s);
@@ -28,7 +29,7 @@ public class stringListAlgos {
             permutations(items, permutation, size);
 
             /* pop and put the removed item back */
-            items.add(permutation.pop());
+            items.add(permutation.remove(permutation.size() - 1));
         }
     }
 

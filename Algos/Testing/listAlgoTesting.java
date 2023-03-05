@@ -17,27 +17,29 @@ public class listAlgoTesting {
     // Example usage of the permutations shit
     public static void intListPermutations() {
 
-        double listLength = 15;
-        Set<Integer> s = new HashSet<Integer>(); // Yes it's a hashmap fucking fight me
-        for (int i = 1; i < listLength+1; i++) {
-            s.add(i);
-        }
+        List<Integer> s = new ArrayList<>(); // It's no longer a hashmap - no more LIFO :(
+        s.add(1);
+        s.add(2);
+        s.add(2);
+        s.add(3);
 
         System.out.println("Original List: " + s);
 
         System.out.println("\nPermutations:");
-        permutations(s, new Stack<Integer>(), s.size());
+        permutations(s, new ArrayList<>(), s.size());
     }
 
-    // Kill me :)
     public static void stringListPermutations() {
-        Set<String> items = new HashSet<>(Arrays.asList("a", "b", "c")); // More hashmaps I know... it hurts me too
+        List<String> items = new ArrayList<>();
+        items.add("A");
+        items.add("B");
+        items.add("B");
+        items.add("C");
 
         System.out.println("Original List: " + items);
 
-        Stack<String> permutation = new Stack<>();
         System.out.println("\nPermutations:");
-        stringListAlgos.permutations(items, permutation, items.size());
+        stringListAlgos.permutations(items, new ArrayList<>(), items.size());
 
     }
 }
