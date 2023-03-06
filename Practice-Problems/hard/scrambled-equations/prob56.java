@@ -35,7 +35,7 @@ public class prob56{
         }
     }
 
-    public static class intListAlgos {  
+    public static class intListAlgos {
         int number;
         Integer[][] allPerms;
         int size;
@@ -55,19 +55,19 @@ public class prob56{
                 allPerms[number] = permutation.toArray(new Integer[0]);
                 number++;
             }
-    
+
             /* items available for permutation */
             Integer[] availableItems = items.toArray(new Integer[0]);
             for(Integer i : availableItems) {
                 /* add current item */
                 permutation.add(i);
-    
+
                 /* remove item from available item set */
                 items.remove(i);
-    
+
                 /* pass it on for next permutation */
                 permutations(items, permutation);
-    
+
                 /* pop and put the removed item back */
                 items.add(permutation.remove(permutation.size()-1));
             }
@@ -76,10 +76,10 @@ public class prob56{
         public Integer[][] getAllPerms(){
             return allPerms;
         }
-    
+
     }
 
-    
+
     public static class stringListAlgos {
         int number;
         String[][] allPerms;
@@ -99,19 +99,19 @@ public class prob56{
                 allPerms[number] = permutation.toArray(new String[0]);
                 number++;
             }
-    
+
             /* items available for permutation */
             String[] availableItems = items.toArray(new String[0]);
             for(String s : availableItems) {
                 /* add current item */
                 permutation.add(s);
-    
+
                 /* remove item from available item set */
                 items.remove(s);
-    
+
                 /* pass it on for next permutation */
                 permutations(items, permutation);
-    
+
                 /* pop and put the removed item back */
                 items.add(permutation.remove(permutation.size() - 1));
             }
@@ -125,7 +125,7 @@ public class prob56{
     public static class orderOps
     {
         int opIndex = 0;
-        Double result = 0.0;
+        double result = 0.0;
         List<Double> nums = new ArrayList<Double>();
         List<String> ops = new ArrayList<String>();
 
@@ -134,17 +134,17 @@ public class prob56{
             for (Integer thing: nums){
                 this.nums.add(Double.valueOf(thing));
             }
-            nums = new ArrayList<>(nums);
+//            nums = new ArrayList<>(nums);
             this.ops = ops;
         }
 
 
-        public int solve()
+        public double solve()
         {
             while (ops.size() > 0){
                 orderOfOperations(nums, ops);
             }
-            return (int) Math.round(result);
+            return result;
         }
 
 
@@ -155,61 +155,61 @@ public class prob56{
             if (ops.indexOf("/") > ops.indexOf("*"))
             {
                 opIndex = ops.indexOf("/");
-    
+
                 result = nums.get(opIndex) / nums.get(opIndex+1);
 //                System.out.println(nums.get(opIndex) + " / " + nums.get(opIndex+1) + " = " + result);
                 nums.set(opIndex, result);
                 nums.remove(opIndex+1);
                 ops.remove(opIndex);
-            } else 
+            } else
             if (ops.indexOf("/") < ops.indexOf("*"))
             {
                 opIndex = ops.indexOf("*");
-    
+
                 result = nums.get(opIndex) * nums.get(opIndex+1);
 //                System.out.println(nums.get(opIndex) + " * " + nums.get(opIndex+1) + " = " + result);
                 nums.set(opIndex, result);
                 nums.remove(opIndex+1);
                 ops.remove(opIndex);
-            } else 
+            } else
             if (ops.indexOf("+") < ops.indexOf("-"))
             {
-                
+
                 opIndex = ops.indexOf("-");
-    
+
                 result = nums.get(opIndex) - nums.get(opIndex+1);
 //                System.out.println(nums.get(opIndex) + " - " + nums.get(opIndex+1) + " = " + result);
                 nums.set(opIndex, result);
                 nums.remove(opIndex+1);
                 ops.remove(opIndex);
-            } else 
+            } else
             {
                 opIndex = ops.indexOf("+");
-    
+
                 result = nums.get(opIndex) + nums.get(opIndex+1);
 //                System.out.println(nums.get(opIndex) + " + " + nums.get(opIndex+1) + " = " + result);
                 nums.set(opIndex, result);
                 nums.remove(opIndex+1);
                 ops.remove(opIndex);
             }
-    
+
         }
     }
-    
-  
-    public class delimiters 
+
+
+    public static class delimiters
     {
         public static String delimit(String string, String start, String end){
             int startIndex = string.indexOf(start);
             int endIndex = string.indexOf(end);
             return string.substring(startIndex+1, endIndex);
         }
-    
+
         public static String delimit(String string, int startIndex, String end){
             int endIndex = string.indexOf(end);
             return string.substring(startIndex, endIndex);
         }
-    
+
         public static String delimit(String string, String start, int endIndex){
             int startIndex = string.indexOf(start);
             return string.substring(startIndex+1, endIndex);
@@ -221,9 +221,9 @@ public class prob56{
         {
             int testCases = Integer.parseInt(input.nextLine());
 
-            for(int testcase = 0; testcase < testCases; testcase++) 
+            for(int testcase = 0; testcase < testCases; testcase++)
             {
-                
+
                 ArrayList<String> stuff = new ArrayList<String>();
                 String line = input.nextLine();
                 int result = Integer.parseInt(delimiters.delimit(line, 0, ":"));
@@ -297,7 +297,7 @@ public class prob56{
                 Integer[][] allIntPerms = intPerms.getAllPerms();
                 String[][] allStringPerms = stringPerms.getAllPerms();
 
-/* 
+/*
                 for (Integer[] intPerm: allIntPerms){
                     for (Integer item: intPerm){
                         System.out.print(item + " | ");
@@ -312,13 +312,21 @@ public class prob56{
                 for (Integer[] intPerm: allIntPerms){
                     for(String[] stringPerm: allStringPerms){
 
-                    List<Integer> intPermList = Arrays.asList(intPerm);
-                    List<String> stringPermList = Arrays.asList(stringPerm);
+                        List<Integer> intPermList = Arrays.asList(intPerm);
+                        List<String> stringPermList = Arrays.asList(stringPerm);
 
-                    orderOps equation = new orderOps(intPermList, stringPermList);
-                    if (equation.solve() == result){
-                        isGood = true;
-                    }
+                        orderOps equation = new orderOps(intPermList, stringPermList);
+                        if (equation.solve() == result){
+/* 
+                            for (int i = 0; i< intPerm.length-1; i++){
+                                System.out.print(intPerm[i] + " " + stringPerm[i] + " ");
+                            }
+                            System.out.print(intPerm[intPerm.length-1] + " = " +  equation.solve() + " = " + result);            
+                            System.out.println("");
+/* */
+
+                              isGood = true;
+                      }
                         //move the shit around to make it a string in the form
                         // 4 * 3 / 2 or whatever
                         //and the make a function that interprets the string into actual math
