@@ -1,0 +1,20 @@
+
+public static class delimiters{
+
+    public static String delimit(String string, String start, String end){
+        int startIndex = string.indexOf(start);
+        int endIndex = string.indexOf(end);
+        return string.substring(startIndex+1, endIndex);
+    }
+    
+    public static String delimit(String string, int startIndex, String end){
+        int endIndex = string.indexOf(end);
+        return string.substring(startIndex, endIndex);
+    }
+    
+    public static String delimit(String string, String start, int endIndex){
+        int startIndex = string.indexOf(start);
+        return string.substring(startIndex+1, endIndex);
+    }
+}
+   
