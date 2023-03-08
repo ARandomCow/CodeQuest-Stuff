@@ -16,6 +16,19 @@ Integer[][] allIntPerms = intPerms.getAllPerms();
         Integer[][] allPerms;
         int size;
 
+
+    //input = integer n
+    //output = n!
+
+    public static int factorial(int n){
+        int result = n;
+        for (int i = n-1; i>0; i--){
+            result *= i;
+        }
+            return result;
+        }
+        
+       
         public intListAlgos(int size){
             allPerms = new Integer[factorial(size)][];
             this.size = size;
@@ -84,6 +97,21 @@ String[][] allStringPerms = stringPerms.getAllPerms();
         String[][] allPerms;
         int size;
 
+
+
+        //input = integer n
+        //output = n!
+
+        public static int factorial(int n){
+            int result = n;
+            for (int i = n-1; i>0; i--){
+                result *= i;
+            }
+                return result;
+            }
+        
+        
+        
         public stringListAlgos(int size){
             this.size = size;
             allPerms = new String[factorial(size)][];
