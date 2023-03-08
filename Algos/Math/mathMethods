@@ -1,14 +1,132 @@
+//input = double and amount of decimal places
+//output = string that looks like the double rounded to the amount of decimals (with trailing zeros)
 
-    public static double round (double value, int precision) {
-        int scale = (int) Math.pow(10, precision);
-        return (double) Math.round(value * scale) / scale;
+public static double decround (double value, int precision) {
+    int scale = (int) Math.pow(10, precision);
+    return (double) Math.round(value * scale) / scale;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------
+
+//input = double and amount of decimal places
+//output = string that looks like the double rounded to the amount of decimals (with trailing zeros)
+
+private static String decroundString (double value, int precision) {
+    int scale = (int) Math.pow(10, precision);
+    String thing = String.valueOf((double) Math.round(value * scale) / scale);
+    if (thing.indexOf(".") == -1){
+        return thing;
+    } else
+    if (thing.indexOf(".") < thing.length()+precision){
+
+        while (thing.length() - precision < thing.indexOf(".")+1){
+            thing += "0";
+        }
+    }
+    return thing;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//input = integer n
+//output = n!
+
+public static int factorial(int n){
+    int result = n;
+    for (int i = n-1; i>0; i--){
+        result *= i;
+    }
+        return result;
     }
 
 
-    public static int factorial(int n){
-        int result = n;
-        for (int i = n-1; i>0; i--){
-            result *= i;
+//----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+//input = a list of your integers and a list of your operators as strings (+, -, /, *)
+//output = whatever the answer to that thing if you iterate through the ints and strings in order
+//example: nums = {2, 5, 3}, ops = {*, -}, result = 2 * 5 - 3 solved using order of operations
+//WARNING: it'll probably break if you don't have exactly 1 less operator than number
+
+//how to use
+/*
+orderOps equation = new orderOps(intPermList, stringPermList);
+double solution = equation.solve();
+*/
+
+    public static class orderOps
+    {
+        int opIndex = 0;
+        double result = 0.0;
+        List<Double> nums = new ArrayList<Double>();
+        List<String> ops = new ArrayList<String>();
+
+        public orderOps(List<Integer> nums, List<String> ops)
+        {
+            for (Integer thing: nums){
+                this.nums.add(Double.valueOf(thing));
+            }
+//            nums = new ArrayList<>(nums);
+            this.ops = ops;
         }
-        return result;
+
+
+        public double solve()
+        {
+            while (ops.size() > 0){
+                orderOfOperations(nums, ops);
+            }
+            return result;
+        }
+
+
+        public void orderOfOperations(List<Double> mums, List<String> bops)
+        {
+            nums = new ArrayList<>(mums);
+            ops = new ArrayList<>(bops);
+            if (ops.indexOf("/") > ops.indexOf("*"))
+            {
+                opIndex = ops.indexOf("/");
+
+                result = nums.get(opIndex) / nums.get(opIndex+1);
+//                System.out.println(nums.get(opIndex) + " / " + nums.get(opIndex+1) + " = " + result);
+                nums.set(opIndex, result);
+                nums.remove(opIndex+1);
+                ops.remove(opIndex);
+            } else
+            if (ops.indexOf("/") < ops.indexOf("*"))
+            {
+                opIndex = ops.indexOf("*");
+
+                result = nums.get(opIndex) * nums.get(opIndex+1);
+//                System.out.println(nums.get(opIndex) + " * " + nums.get(opIndex+1) + " = " + result);
+                nums.set(opIndex, result);
+                nums.remove(opIndex+1);
+                ops.remove(opIndex);
+            } else
+            if (ops.indexOf("+") < ops.indexOf("-"))
+            {
+
+                opIndex = ops.indexOf("-");
+
+                result = nums.get(opIndex) - nums.get(opIndex+1);
+//                System.out.println(nums.get(opIndex) + " - " + nums.get(opIndex+1) + " = " + result);
+                nums.set(opIndex, result);
+                nums.remove(opIndex+1);
+                ops.remove(opIndex);
+            } else
+            {
+                opIndex = ops.indexOf("+");
+
+                result = nums.get(opIndex) + nums.get(opIndex+1);
+//                System.out.println(nums.get(opIndex) + " + " + nums.get(opIndex+1) + " = " + result);
+                nums.set(opIndex, result);
+                nums.remove(opIndex+1);
+                ops.remove(opIndex);
+            }
+
+        }
     }
