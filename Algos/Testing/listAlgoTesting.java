@@ -11,7 +11,7 @@ public class listAlgoTesting {
 
     public static void main(String[] args) {
 
-        stringListPermutations();
+        intListPermutations();
     }
 
     // Example usage of the permutations shit
