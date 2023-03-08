@@ -4,6 +4,8 @@ output = index of the smallest double
 
 just use arr[index] or arr[minIndex(arr)] to find the actual smallest number
 you can also just switch double[] to int[] or float[] or whatever you need. it all works.
+
+if you need max instead of min, just change temp > arr[i] to temp < arr[i] and you're golden
 */    
 
     public static int minIndex(double[] arr){
