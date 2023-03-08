@@ -1,7 +1,7 @@
 //input = double and amount of decimal places
 //output = string that looks like the double rounded to the amount of decimals (with trailing zeros)
 
-public static double decround (double value, int precision) {
+public static double decRound (double value, int precision) {
     int scale = (int) Math.pow(10, precision);
     return (double) Math.round(value * scale) / scale;
 }
@@ -11,7 +11,7 @@ public static double decround (double value, int precision) {
 //input = double and amount of decimal places
 //output = string that looks like the double rounded to the amount of decimals (with trailing zeros)
 
-private static String decroundString (double value, int precision) {
+private static String decRoundString (double value, int precision) {
     int scale = (int) Math.pow(10, precision);
     String thing = String.valueOf((double) Math.round(value * scale) / scale);
     if (thing.indexOf(".") == -1){
@@ -45,14 +45,14 @@ public static int factorial(int n){
 //----------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-//input = a list of your integers and a list of your operators as strings (+, -, /, *)
-//output = whatever the answer to that thing if you iterate through the ints and strings in order
-//example: nums = {2, 5, 3}, ops = {*, -}, result = 2 * 5 - 3 solved using order of operations
-//WARNING: it'll probably break if you don't have exactly 1 less operator than number
-
-//how to use
 /*
+input = a list of your integers and a list of your operators as strings (+, -, /, *)
+output = whatever the answer to that thing if you iterate through the ints and strings in order
+example: nums = {2, 5, 3}, ops = {*, -}, result = 2 * 5 - 3 solved using order of operations
+WARNING: it'll probably break if you don't have exactly 1 less operator than number
+
+how to use
+
 orderOps equation = new orderOps(intPermList, stringPermList);
 double solution = equation.solve();
 */
