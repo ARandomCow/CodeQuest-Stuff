@@ -1,3 +1,15 @@
+/*
+input = ArrayList of items that you want all permutations of
+output = int[][] of all possible permutations of your input
+WARNING: don't use too big of lists or your computer will explode
+
+how to use:
+intListAlgos intPerms = new intListAlgos(intsList.size());
+
+intPerms.permutations(intsList, new ArrayList<Integer>());
+
+Integer[][] allIntPerms = intPerms.getAllPerms();
+*/
 
     public static class intListAlgos {
         int number;
@@ -48,6 +60,22 @@
 
 
 
+
+
+
+/*
+input = ArrayList of items that you want all permutations of
+output = String[][] of all possible permutations of your input
+WARNING: don't use too big of lists or your computer will explode
+
+
+how to use:
+stringListAlgos stringPerms = new stringListAlgos(stringList.size());
+
+stringPerms.permutations(stringList, new ArrayList<String>());
+
+String[][] allStringPerms = stringPerms.getAllPerms();
+*/
 
 
 
