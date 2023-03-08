@@ -26,6 +26,7 @@ public static boolean isLetter(String thing){
     }
     
     
+//----------------------------------------------------------------------------------------------------------------------------------------------
 
     
 /*
@@ -43,6 +44,9 @@ output = String[], with each element being a letter in that input string
     }
     
     
+//----------------------------------------------------------------------------------------------------------------------------------------------
+    
+    
 /*
 input = any string, probably nonempty
 output = ArrayList<String>(), with each element being a letter in that input string
@@ -57,7 +61,8 @@ output = ArrayList<String>(), with each element being a letter in that input str
     }
     
     
-    
+//----------------------------------------------------------------------------------------------------------------------------------------------
+
     
     
 /*
