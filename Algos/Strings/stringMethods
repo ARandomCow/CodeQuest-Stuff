@@ -26,7 +26,7 @@ public static boolean isLetter(String thing){
     }
     
     
-    
+
     
 /*
 input = any string, probably nonempty
@@ -41,6 +41,21 @@ output = String[], with each element being a letter in that input string
         }
         return result;
     }
+    
+    
+/*
+input = any string, probably nonempty
+output = ArrayList<String>(), with each element being a letter in that input string
+*/
+
+    public static List<String> stringToList(String string){
+        List<String> result = new ArrayList<String>();
+        for (int i = 0; i< string.length(); i++){
+            result.add(string.substring(i, i+1));
+        }
+        return result;
+    }
+    
     
     
     
