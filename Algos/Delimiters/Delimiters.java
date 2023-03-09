@@ -3,7 +3,7 @@ package Algos.Delimiters;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Delimiters {
+public static class Delimiters {
 
 
     /*
