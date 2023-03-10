@@ -72,9 +72,10 @@ public class prob96
 
                 for (int i = 0; i<Grid.length; i++){
                     int[] rows = Grid[i];
-                    for (int num: rows){
-                        System.out.print(num + " ");
+                    for (int y = 0; y<rows.length-1; y++){
+                        System.out.print(rows[y] + " ");
                     }
+                    System.out.print(rows[rows.length-1]);
                     System.out.println("");
                 }
 

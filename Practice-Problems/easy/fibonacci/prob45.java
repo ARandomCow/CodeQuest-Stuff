@@ -1,3 +1,5 @@
+import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.util.*;
 
 public class prob45 
@@ -14,9 +16,9 @@ public class prob45
             {
                 int step = input.nextInt();
 
-                int num1 =0;
-                int num2 =1;
-                int temp = num1;
+                BigInteger num1 = BigInteger.valueOf(0);
+                BigInteger num2 = BigInteger.valueOf(1);
+                BigInteger temp = num1;
                 int count = 2;
                 if (step <= 1){
                     System.out.println(step + " = 0");
@@ -26,14 +28,17 @@ public class prob45
                 {
 
                     temp = num2;
-                    num2 += num1;
+                    num2 = num2.add(num1);
                     num1 = temp;
                     count++;
                 }
                 
-                System.out.println(step + " = "+ num2);
+//                System.out.println(num2);
 
+                System.out.println(step + " = "+ num2);
+/* */
             }
         }
     }
+
 }
