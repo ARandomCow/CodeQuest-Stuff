@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.stream.*;
+
 
 public class prob46
 {
@@ -19,8 +21,25 @@ public class prob46
                 boolean temp = false;
                 String print = "";
 
-                lastYear = alphSort(lastYear);
-                thisYear = alphSort(thisYear);
+                if (line1.equals("")){
+                    System.out.println("");
+                    System.out.println(line2);
+                    System.out.println("");
+                    continue;
+                } else
+                if (line2.equals("")){
+                    System.out.println(line1);
+                    System.out.println("");
+                    System.out.println("");
+                    continue;
+                } else
+
+                lastYear = Stream.of(lastYear)
+                            .sorted()
+                            .toArray(String[]::new);
+                thisYear = Stream.of(thisYear)
+                            .sorted()
+                            .toArray(String[]::new);
 /* 
                 for (String last: lastYear){
                     System.out.print(last + " | ");
@@ -84,7 +103,8 @@ public class prob46
         }
     }
 
-    public static String[] alphSort(String[] strings){
+    public static String[] alphSort(String[] strings)
+    {
         String[] result = strings;
         for (int i = 0; i<strings.length; i++){
             for (int y = i; y<strings.length; y++){
@@ -95,6 +115,8 @@ public class prob46
                         result[y] = temp1;
                         result[i] = temp2;
                 }
+//                else if ((int) strings[i].charAt(0) == (int)(strings[y].charAt(0))){
+
             }
         }
         return result;
