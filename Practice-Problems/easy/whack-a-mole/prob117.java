@@ -1,7 +1,38 @@
-package Algos.Delimiters;
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.List;
+
+public class prob117
+{
+    public static void main(String[] args)
+    {
+
+
+
+        try (Scanner input = new Scanner(System.in))
+        {
+
+            int testCases = Integer.parseInt(input.nextLine());
+
+
+            for(int testcase = 0; testcase < testCases; testcase++)
+            {
+                String line = input.nextLine();
+                String[] moles = Delimiters.delimitAllStrings(line, " ");
+                List<String> moleList = new ArrayList<String>(Arrays.asList(moles));
+                while (moleList.contains("M")){
+                    System.out.print(moleList.indexOf("M")+1);
+                    moleList.set(moleList.indexOf("M"), "O");
+                    if (moleList.contains("M")){
+                        System.out.print(" ");
+                    }
+                }
+                System.out.println("");
+
+            }
+        }
+    }
+
+
 
 public static class Delimiters {
 
@@ -40,7 +71,7 @@ public static class Delimiters {
 
         while(line.contains(spacer)){
             resultList.add(Integer.parseInt(delimit(line, 0, spacer)));
-            line = line.substring(line.indexOf(spacer)+spacer.length());
+            line = line.substring(line.indexOf(spacer)+1);
         }
         resultList.add(Integer.parseInt(line));
 
@@ -59,7 +90,7 @@ public static class Delimiters {
 
         while(line.contains(spacer)){
             resultList.add(delimit(line, 0, spacer));
-            line = line.substring(line.indexOf(spacer)+spacer.length());
+            line = line.substring(line.indexOf(spacer)+1);
         }
         resultList.add(line);
 
@@ -73,3 +104,4 @@ public static class Delimiters {
     }
 }
 
+}

@@ -1,7 +1,58 @@
-package Algos.Delimiters;
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.List;
+public class prob166
+{
+    public static void main(String[] args)
+    {
+
+
+
+        try (Scanner input = new Scanner(System.in))
+        {
+
+            int testCases = Integer.parseInt(input.nextLine());
+
+
+            for(int testcase = 0; testcase < testCases; testcase++)
+            {
+                String hPlural = " hours";
+                String mPlural = " minutes";
+                String line = input.nextLine();
+                String name = Delimiters.delimit(line, 0, ",");
+                line = line.substring(line.indexOf(",")+1);
+                String[] times = Delimiters.delimitAllStrings(line, ",");
+                int totalMinutes = 0;
+                for (String time: times){
+                    int hours = Integer.parseInt(Delimiters.delimit(time, 0, ":"));
+                    int minutes = Integer.parseInt(Delimiters.delimit(time, ":", time.length()));
+
+                    totalMinutes+= minutes + (hours*60);
+                }
+                int actualMinutes = totalMinutes%60;
+                int actualHours = ((totalMinutes-(totalMinutes%60)))/60;
+
+                if (actualHours ==1){
+                    hPlural = " hour";
+                }
+                if (actualMinutes == 1){
+                    mPlural = " minute";
+                }
+
+//                if (actualHours == 0){
+//                    System.out.println(name + "=" + actualMinutes + mPlural);
+//                } else 
+                if (actualMinutes == 0){
+                    System.out.println(name + "=" + actualHours + hPlural);
+                } else {
+                System.out.println(name + "=" + actualHours + hPlural + " " + actualMinutes + mPlural);
+                }
+
+
+
+            }
+        }
+    }
+
 
 public static class Delimiters {
 
@@ -40,7 +91,7 @@ public static class Delimiters {
 
         while(line.contains(spacer)){
             resultList.add(Integer.parseInt(delimit(line, 0, spacer)));
-            line = line.substring(line.indexOf(spacer)+spacer.length());
+            line = line.substring(line.indexOf(spacer)+1);
         }
         resultList.add(Integer.parseInt(line));
 
@@ -59,7 +110,7 @@ public static class Delimiters {
 
         while(line.contains(spacer)){
             resultList.add(delimit(line, 0, spacer));
-            line = line.substring(line.indexOf(spacer)+spacer.length());
+            line = line.substring(line.indexOf(spacer)+1);
         }
         resultList.add(line);
 
@@ -73,3 +124,4 @@ public static class Delimiters {
     }
 }
 
+}

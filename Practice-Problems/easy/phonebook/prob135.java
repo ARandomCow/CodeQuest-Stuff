@@ -1,7 +1,47 @@
-package Algos.Delimiters;
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.List;
+public class prob135
+{
+    public static void main(String[] args)
+    {
+
+
+
+        try (Scanner input = new Scanner(System.in))
+        {
+
+            int testCases = Integer.parseInt(input.nextLine());
+
+
+            for(int testcase = 0; testcase < testCases; testcase++)
+            {
+                String line = input.nextLine();
+                String number = Delimiters.delimit(line, 0, " ");
+                String first = number.substring(0, 3);
+                String second = number.substring(3, 6);
+                String third = number.substring(6, 10);
+
+
+                if (line.contains("PARENTHESES")){
+                    System.out.println("(" + first + ") " + second + "-" + third);
+                } else if (line.contains("DASHES")){
+                    System.out.println(first + "-" + second + "-" + third);
+                } else{
+                    System.out.println(first + "." + second + "." + third);
+                }
+
+  
+
+
+            }
+        }
+    }
+
+
+
+
+
+
 
 public static class Delimiters {
 
@@ -40,7 +80,7 @@ public static class Delimiters {
 
         while(line.contains(spacer)){
             resultList.add(Integer.parseInt(delimit(line, 0, spacer)));
-            line = line.substring(line.indexOf(spacer)+spacer.length());
+            line = line.substring(line.indexOf(spacer)+1);
         }
         resultList.add(Integer.parseInt(line));
 
@@ -59,7 +99,7 @@ public static class Delimiters {
 
         while(line.contains(spacer)){
             resultList.add(delimit(line, 0, spacer));
-            line = line.substring(line.indexOf(spacer)+spacer.length());
+            line = line.substring(line.indexOf(spacer)+1);
         }
         resultList.add(line);
 
@@ -73,3 +113,5 @@ public static class Delimiters {
     }
 }
 
+
+}

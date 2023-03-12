@@ -1,7 +1,70 @@
-package Algos.Delimiters;
+import java.util.*;
+import java.util.stream.*;
 
-import java.util.ArrayList;
-import java.util.List;
+public class prob164
+{
+    public static void main(String[] args)
+    {
+
+
+
+        try (Scanner input = new Scanner(System.in))
+        {
+
+            int testCases = Integer.parseInt(input.nextLine());
+
+
+            for(int testcase = 0; testcase < testCases; testcase++)
+            {
+                String line = input.nextLine();
+                int database = Integer.parseInt(Delimiters.delimit(line, 0, " "));
+                int computer = Integer.parseInt(Delimiters.delimit(line, " ", line.length()));
+                String ship = "";
+                String[] dataShips = new String[database];
+                String[] compShips = new String[computer];
+
+                String[] difference = new String[database-computer];
+                int diffIndex = 0;
+
+                for (int i = 0; i<database; i++){
+                    ship = input.nextLine();
+                    dataShips[i] = ship;
+                }
+
+                for (int i = 0; i<computer; i++){
+                    ship = input.nextLine().toLowerCase();
+                    compShips[i] = ship;
+                }
+/* */
+                if (database== computer){
+                    continue;
+                }
+/* */
+                for (String shipName: dataShips){
+                    if (!Arrays.asList(compShips).contains(shipName.toLowerCase())){
+                        difference[diffIndex] = shipName;
+                        diffIndex++;
+                    }
+                }
+
+
+                difference = alphOrder(difference);
+                for (String dif: difference){
+                    System.out.println(dif);
+                }
+                
+            }
+        }
+    }
+
+    public static String[] alphOrder(String[] stringArray){
+        String[] str = Stream.of(stringArray)
+        .sorted()
+        .toArray(String[]::new);
+
+        return str;
+    }
+
 
 public static class Delimiters {
 
@@ -40,7 +103,7 @@ public static class Delimiters {
 
         while(line.contains(spacer)){
             resultList.add(Integer.parseInt(delimit(line, 0, spacer)));
-            line = line.substring(line.indexOf(spacer)+spacer.length());
+            line = line.substring(line.indexOf(spacer)+1);
         }
         resultList.add(Integer.parseInt(line));
 
@@ -59,7 +122,7 @@ public static class Delimiters {
 
         while(line.contains(spacer)){
             resultList.add(delimit(line, 0, spacer));
-            line = line.substring(line.indexOf(spacer)+spacer.length());
+            line = line.substring(line.indexOf(spacer)+1);
         }
         resultList.add(line);
 
@@ -73,3 +136,4 @@ public static class Delimiters {
     }
 }
 
+}

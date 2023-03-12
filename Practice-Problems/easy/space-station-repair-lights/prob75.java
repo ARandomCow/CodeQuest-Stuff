@@ -1,7 +1,46 @@
-package Algos.Delimiters;
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.List;
+public class prob75
+{
+    public static void main(String[] args)
+    {
+
+
+
+        try (Scanner input = new Scanner(System.in))
+        {
+
+            int testCases = Integer.parseInt(input.nextLine());
+
+
+            for(int testcase = 0; testcase < testCases; testcase++)
+            {
+
+                String line = input.nextLine();
+                String[] broken = Delimiters.delimitAllStrings(line, " ");
+                String[] lights = {"off", "red", "green", "blue"};
+                
+                int checkNum = 0;
+                int i = 0;
+                for (int y = broken.length-1; y>=0; y--){
+
+                    if (broken[y].equals("BROKEN")){
+                        checkNum+= Math.pow(2, i);
+                    }
+                    i++;
+                }
+//                System.out.println(checkNum);
+
+
+                String rightLight = lights[(checkNum%4)];
+                String leftLight = lights[(int)((checkNum - (checkNum%4))/4)];
+
+                System.out.println(leftLight + " " + rightLight);
+
+
+            }
+        }
+    }
 
 public static class Delimiters {
 
@@ -40,7 +79,7 @@ public static class Delimiters {
 
         while(line.contains(spacer)){
             resultList.add(Integer.parseInt(delimit(line, 0, spacer)));
-            line = line.substring(line.indexOf(spacer)+spacer.length());
+            line = line.substring(line.indexOf(spacer)+1);
         }
         resultList.add(Integer.parseInt(line));
 
@@ -59,7 +98,7 @@ public static class Delimiters {
 
         while(line.contains(spacer)){
             resultList.add(delimit(line, 0, spacer));
-            line = line.substring(line.indexOf(spacer)+spacer.length());
+            line = line.substring(line.indexOf(spacer)+1);
         }
         resultList.add(line);
 
@@ -73,3 +112,4 @@ public static class Delimiters {
     }
 }
 
+}
