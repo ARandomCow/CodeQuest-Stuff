@@ -60,6 +60,26 @@ public class Arrays {
     }
 
 
+    /*
+     * @param intArray - array where you want all the numbers in a certain interval
+     * assumes intArray is sorted
+     * @param startIndex - the index that the result array will start on
+     * @param interval - the interval that the method will find all the numbers in
+     * aka from intArray[startIndex] to intArray[startIndex]+10
+     * @result a new array containing only all the number inside that specific interval
+     */
+    public static int[] numsInAnInterval(int[] intArray, int startIndex, int interval){
+        int lastIndex = startIndex;
+        while (intArray[lastIndex] <= intArray[startIndex]+interval){
+            if (lastIndex == intArray.length-1){
+                return Arrays.copyOfRange(intArray, startIndex, intArray.length);
+            }
+            lastIndex++;
+        }
+        return Arrays.copyOfRange(intArray, startIndex, lastIndex);
+    }
+
+
 
 /*
  * @param arr - array of stuff

@@ -13,16 +13,10 @@ public class strings {
      */
     public static boolean isLetter(String thing){
         String alph = "qwertyuiopasdfghjklzxcvbnm1234567890";
-        boolean temp = false;
-        for (int i = 0; i < thing.length(); i++){
-            for (int y = 0; y < alph.length(); y++){
-                if(thing.substring(i, i+1).equals(alph.substring(y, y+1))){
-                    temp = true;
-                }
+        for (int y = 0; y < alph.length(); y++){
+            if(thing.contains(alph.substring(y, y+1))){
+                return true;
             }
-        }
-        if (temp == true){
-            return true;
         }
         return false;
     }
