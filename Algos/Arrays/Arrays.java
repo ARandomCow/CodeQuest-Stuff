@@ -11,6 +11,7 @@ public class Arrays {
     just use arr[index] or arr[minIndex(arr)] to find the actual smallest number
     you can also just switch double[] to int[] or float[] or whatever you need. it all works.
 
+    just switch the < to > if you want the function maxIndex
 */
 
     public static int minIndex(double[] arr){
@@ -26,25 +27,6 @@ public class Arrays {
     }
 
 
-    /*
-    input = array of doubles
-    output = index of the largest double
-
-    just use arr[index] or arr[minIndex(arr)] to find the actual smallest number
-    you can also just switch double[] to int[] or float[] or whatever you need. it all works.
-
-*/
-    public static int maxIndex(double[] arr){
-        double temp = arr[0];
-        int index = 0;
-        for (int i =0; i< arr.length; i++){
-            if (temp < arr[i]){
-                temp = arr[i];
-                index = i;
-            }
-        }
-        return index;
-    }
 
 /*
  * @param stringArray array of Strings

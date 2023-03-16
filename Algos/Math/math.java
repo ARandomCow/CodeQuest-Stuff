@@ -57,11 +57,33 @@ public class math {
     }
 
 
+    public static String fraction(double decimal, double tolerance) {
+        int sign = (decimal < 0.0) ? -1 : 1;
+        decimal = Math.abs(decimal);
+
+        if (decimal == (int) decimal) {
+            return (sign * (int) decimal + "");
+        }
+
+        double res = decimal, num = 0.0, denom = 1.0, lastdenom = 0.0, temp;
+        do {
+            res = 1.0 / (res - (int) res);
+            temp = denom;
+            denom = denom * (int) res + lastdenom;
+            lastdenom = temp;
+
+            num = Math.round(decimal * denom);
+        } while (res != (int) res && Math.abs(decimal - (num / denom)) > tolerance);
+
+        return (sign * (int) num + "/" + (int) denom);
+    }
+
+
 /*
  * @param self explanatory
- * @result the smallest number that divides the two integers
+ * @result the largest number that divides the two integers
  */
-    public static int greatestCommonFactor(int num1, int num2){
+    public static int greatestCommonFactor(int num1, int num2) {
         int larger = num2;
         int smaller = num1;
         if (num1 > num2){
