@@ -3,12 +3,11 @@ package Algos.Math;
 public class math {
 
 
-    /**
-     *
-     * @param value number to be rounded
-     * @param precision number of decimal places
-     * @return rounded number according to params
-     */
+/**
+ * @param value number to be rounded
+ * @param precision number of decimal places
+ * @return rounded number according to params
+ */
     public static double decRound (double value, int precision) {
         int scale = (int) Math.pow(10, precision);
         return (double) Math.round(value * scale) / scale;
@@ -16,14 +15,14 @@ public class math {
 
 
 
-    /*
-    * @param num - double you want in a specified format
-    * @param leading - number of digits before decimal place. Can be any number greater than or equal to 0
-    * @param trailing - number of digits after decimal place. 
-    * Should be as big as the number of digits in your largest number (if that's 999, then trailing should equal 3)
-    * set trailing to 0 if you don't care about trailing zeros
-    * @result a string of your number with the specified number of leading and trailing zeros
-    */
+/**
+* @param num - double you want in a specified format
+* @param leading - number of digits before decimal place. Can be any number greater than or equal to 0
+* @param trailing - number of digits after decimal place.
+* Should be as big as the number of digits in your largest number (if that's 999, then trailing should equal 3)
+* set trailing to 0 if you don't care about trailing zeros
+* @result a string of your number with the specified number of leading and trailing zeros
+*/
     public static String trailingAndLeadingZeroes(double num, int trailing, int leading){
         int scale = (int) Math.pow(10, trailing);
         String result = String.valueOf((double) Math.round(num * scale) / scale);
@@ -43,11 +42,10 @@ public class math {
 
 
 
-    /**
-     *
-     * @param n
-     * @return n!
-     */
+/**
+ * @param n
+ * @return n!
+ */
     public static int factorial(int n){
         int result = n;
         for (int i = n-1; i>0; i--){
@@ -56,7 +54,14 @@ public class math {
         return result;
     }
 
-
+/**
+ * @param decimal - double that you want turned into a fraction
+ * @param tolerance - the maximum difference between the value of the fraction and the value of decimal
+ * Just have it at like 0.00001 or something
+ * @return - a String that looks like the fraction value of your decimal
+ * example: fraction(1.571428571, 0.00001) ->
+ * "11/7"
+*/
     public static String fraction(double decimal, double tolerance) {
         int sign = (decimal < 0.0) ? -1 : 1;
         decimal = Math.abs(decimal);
@@ -79,7 +84,7 @@ public class math {
     }
 
 
-/*
+/**
  * @param self explanatory
  * @result the largest number that divides the two integers
  */
@@ -93,7 +98,6 @@ public class math {
 
         while (smaller != larger)
         {
-//            System.out.println(larger+ "-" + smaller + "=" + (larger - smaller));
             int temp = larger - smaller;
             if (temp > smaller){
                 larger = temp;
@@ -107,12 +111,12 @@ public class math {
     
     
     
-    /*
-    * @param num - number you want converted to binary
-    * @param bits - number of bits you want your binary number to have (important for trailing zeroes)
-    * make sure you have enough bits for your number (for n bits, num < 2^n)
-    * @result binaryNum - a string of 1's and 0's representing num in binary
-    */
+/**
+* @param num - number you want converted to binary
+* @param bits - number of bits you want your binary number to have (important for trailing zeroes)
+* make sure you have enough bits for your number (for n bits, num < 2^n)
+* @result binaryNum - a string of 1's and 0's representing num in binary
+*/
         public static String toBits(int num, int bits)
         {
             int bit = 0;

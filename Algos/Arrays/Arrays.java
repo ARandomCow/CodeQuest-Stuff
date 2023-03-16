@@ -4,16 +4,16 @@ import java.util.stream.Stream;
 
 public class Arrays {
 
-    /*
-    input = array of doubles
-    output = index of the smallest double
 
-    just use arr[index] or arr[minIndex(arr)] to find the actual smallest number
-    you can also just switch double[] to int[] or float[] or whatever you need. it all works.
-
-    just switch the < to > if you want the function maxIndex
-*/
-
+/**
+ * @param arr - array of doubles
+ * @result index - index of the smallest double
+ *
+ * just use arr[minIndex(arr)] to find the actual smallest number
+ * you can also just switch double[] to int[] or float[] or whatever you need. it all works.
+ *
+ * just switch the < to > if you want the function maxIndex
+ */
     public static int minIndex(double[] arr){
         double temp = arr[0];
         int index = 0;
@@ -28,10 +28,10 @@ public class Arrays {
 
 
 
-/*
+/**
  * @param stringArray array of Strings
  * @return str a new String[], but ordered alphabetically now
- * MUST HAVE import java.util.stream.*;
+ * MUST HAVE import java.util.stream.Stream;
  */
     public static String[] alphOrder(String[] stringArray){
         String[] str = Stream.of(stringArray)
@@ -42,14 +42,14 @@ public class Arrays {
     }
 
 
-    /*
-     * @param intArray - array where you want all the numbers in a certain interval
-     * assumes intArray is sorted
-     * @param startIndex - the index that the result array will start on
-     * @param interval - the interval that the method will find all the numbers in
-     * aka from intArray[startIndex] to intArray[startIndex]+10
-     * @result a new array containing only all the number inside that specific interval
-     */
+/**
+ * @param intArray - array where you want all the numbers in a certain interval
+ * assumes intArray is sorted
+ * @param startIndex - the index that the result array will start on
+ * @param interval - the interval that the method will find all the numbers in
+ * aka from intArray[startIndex] to intArray[startIndex]+10
+ * @result a new array containing only all the number inside that specific interval
+ */
     public static int[] numsInAnInterval(int[] intArray, int startIndex, int interval){
         int lastIndex = startIndex;
         while (intArray[lastIndex] <= intArray[startIndex]+interval){
@@ -63,10 +63,12 @@ public class Arrays {
 
 
 
-/*
+/**
  * @param arr - array of stuff
  * @param spacer - thing you want in between stuff
- * @return console line of all the things in the stuff in the form a,b,c,d. . .
+ * @return console line of all the things in the stuff in the form a[spacer]b[spacer]c. . .
+ * example printIntArr({3, 7, 4}, " | ") ->
+ * 3 | 7 | 4
  */ 
     public static void printIntArr(int[] arr, String spacer){
         for (int i = 0; i< arr.length; i++){

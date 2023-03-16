@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/*
-input = a list of your integers and a list of your operators as strings (+, -, /, *)
-output = whatever the answer to that thing if you iterate through the ints and strings in order
-example: nums = {2, 5, 3}, ops = {*, -}, result = 2 * 5 - 3 solved using order of operations
-WARNING: it'll probably break if you don't have exactly 1 less operator than number
-
-how to use
-
-orderOps equation = new orderOps(intPermList, stringPermList);
-double solution = equation.solve();
+/**
+ * @param numbers - a list of your doubles that you want in the equation
+ * @param operators - a list of your operators as strings ("+", "-", "/", "*")
+* @result - whatever the answer to that thing if you iterate through the ints and strings in order
+ * example: nums = {2, 5, 3}, ops = {*, -}, result = 2 * 5 - 3 solved using order of operations
+ * WARNING: it'll probably break if you don't have exactly 1 less operator than number
+ *
+ * how to use
+ *
+ * orderOps equation = new orderOps(numbers, operators);
+ * double solution = equation.solve();
 */
 
 public class orderOps {
@@ -42,10 +43,10 @@ public class orderOps {
     }
 
 
-    private void orderOfOperations(List<Double> mums, List<String> bops)
+    private void orderOfOperations(List<Double> numbers, List<String> operators)
     {
-        nums = new ArrayList<>(mums);
-        ops = new ArrayList<>(bops);
+        nums = new ArrayList<>(numbers);
+        ops = new ArrayList<>(operators);
         if (ops.indexOf("/") > ops.indexOf("*"))
         {
             opIndex = ops.indexOf("/");
