@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @param numbers - a list of your doubles that you want in the equation
  * @param operators - a list of your operators as strings ("+", "-", "/", "*")
-* @result - whatever the answer to that thing if you iterate through the ints and strings in order
+ * @result - whatever the answer to that thing if you iterate through the ints and strings in order
  * example: nums = {2, 5, 3}, ops = {*, -}, result = 2 * 5 - 3 solved using order of operations
  * WARNING: it'll probably break if you don't have exactly 1 less operator than number
  *
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * orderOps equation = new orderOps(numbers, operators);
  * double solution = equation.solve();
-*/
+ */
 
 public class orderOps {
 
@@ -90,3 +90,4 @@ public class orderOps {
 
     }
 }
+

@@ -3,18 +3,18 @@ package Algos.Lists;
 import java.util.Arrays;
 import java.util.List;
 
-/*
-input = ArrayList of items that you want all permutations of
-output = String[][] of all possible permutations of your input
-WARNING: don't use too big of lists or your computer will explode
-
-
-how to use:
-stringListAlgos stringPerms = new stringListAlgos(stringList.size());
-
-stringPerms.permutations(stringList, new ArrayList<String>());
-
-String[][] allStringPerms = stringPerms.getAllPerms();
+/**
+ * input = ArrayList of items that you want all permutations of
+ * output = String[][] of all possible permutations of your input
+ * WARNING: don't use too big of lists or your computer will explode
+ *
+ *
+ * how to use:
+ * stringListAlgos stringPerms = new stringListAlgos(stringList.size());
+ *
+ * stringPerms.permutations(stringList, new ArrayList<String>());
+ *
+ * String[][] allStringPerms = stringPerms.getAllPerms();
 */
 
 

@@ -6,24 +6,35 @@ import java.util.List;
 public class strings {
 
 /**
- *
  * @param thing String object meant to be single char
  * @return boolean - (for this case, its checking if its anywhere in the alphabet or is a number)
  * If you need even more variability, you can make it isLetter(String thing, String checker) and just say alph = checker.
  */
     public static boolean isLetter(String thing){
-        String alph = "qwertyuiopasdfghjklzxcvbnm1234567890";
-        for (int y = 0; y < alph.length(); y++){
-            if(thing.contains(alph.substring(y, y+1))){
-                return true;
-            }
+        String alph = "qwertyuiopasdfghjklzxcvbnm";
+        if (alph.contains(thing)){
+            return true;
         }
         return false;
     }
 
 
 /**
- *
+ * @param str - String that you need to find all the letters in
+ * @param letter - String, the letter you're trying to find the frequency of
+ * @return count - int, the number of times 'letter' appears in str
+ */
+    public static int letterCount(String str, String letter){
+        int count = 0;
+        while (str.contains(letter)){
+            count++;
+            str = str.substring(0, str.indexOf(letter)) + str.substring(str.indexOf(letter)+1);
+        }
+        return count;
+    }
+
+
+/**
  * @param string any nonempty string
  * @return `string` but all the letters are rearranged to make it alphabetical
  * example: trouble -> belortu
@@ -46,7 +57,6 @@ public class strings {
     }
 
 /**
- *
  * @param string - any string, nonempty
  * @return ArrayList<String>(), with each element being a letter in that input string
  */
@@ -59,7 +69,6 @@ public class strings {
     }
 
 /**
- *
  * @param string - any string, nonempty
  * @return String[], with each element being a letter in that input string
  */

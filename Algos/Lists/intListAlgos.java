@@ -2,17 +2,17 @@ package Algos.Lists;
 
 import java.util.*;
 
-/*
-input = ArrayList of items that you want all permutations of
-output = int[][] of all possible permutations of your input
-WARNING: don't use too big of lists or your computer will explode
-
-how to use:
-intListAlgos intPerms = new intListAlgos(intsList.size());
-
-intPerms.permutations(intsList, new ArrayList<Integer>());
-
-Integer[][] allIntPerms = intPerms.getAllPerms();
+/**
+ * input = ArrayList of items that you want all permutations of
+ * output = int[][] of all possible permutations of your input
+ * WARNING: don't use too big of lists or your computer will explode
+ *
+ * how to use:
+ * intListAlgos intPerms = new intListAlgos(intsList.size());
+ *
+ * intPerms.permutations(intsList, new ArrayList<Integer>());
+ *
+ * Integer[][] allIntPerms = intPerms.getAllPerms();
 */
 
 public static class intListAlgos 
