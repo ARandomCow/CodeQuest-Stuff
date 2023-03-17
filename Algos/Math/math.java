@@ -16,14 +16,14 @@ public class math {
 
 
 /**
+* The best goddamn rounding algorithm you'll ever need
 * @param num - double you want in a specified format
 * @param leading - number of digits before decimal place. Can be any number greater than or equal to 0
 * @param trailing - number of digits after decimal place.
-* Should be as big as the number of digits in your largest number (if that's 999, then trailing should equal 3)
 * set trailing to 0 if you don't care about trailing zeros
 * @result a string of your number with the specified number of leading and trailing zeros
 */
-    public static String trailingAndLeadingZeroes(double num, int trailing, int leading){
+    public static String roundToString(double num, int trailing, int leading){
         int scale = (int) Math.pow(10, trailing);
         String result = String.valueOf((double) Math.round(num * scale) / scale);
         if (trailing == 0){
