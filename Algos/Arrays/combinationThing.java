@@ -5,7 +5,7 @@ public class combinationThing {
 
     public static int[][] combinations(int k, int[] arr) {
         int n = arr.length;
-        int numCombinations = factorial(n) / (factorial(k) * factorial(n - k));
+        int numCombinations = (int) (factorial(n) / (factorial(k) * factorial(n - k)));
         int[][] result = new int[numCombinations][k];
         int[] indices = new int[k];
 
@@ -31,8 +31,8 @@ public class combinationThing {
         return result;
     }
 
-    public static int factorial(int n) {
-        int result = 1;
+    public static long factorial(int n) {
+        long result = 1;
         for (int i = 2; i <= n; i++) {
             result *= i;
         }

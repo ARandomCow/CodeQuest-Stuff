@@ -26,11 +26,18 @@ public class Grids{
  * @param intGrid - 2d array with possible repeats
  * @return Grid with no repeats
  */
-    public static int[][] removeAllRepeats(Integer[][] intGrid)
+    public static int[][] removeAllRepeats(int[][] intGrid)
     {
+        Integer[][] integerGrid = new Integer[intGrid.length][];
+        for (int row = 0; row<integerGrid.length; row++){
+            integerGrid[row] = new Integer[intGrid[row].length];
+            for (int col = 0; col < integerGrid[row].length; col++){
+                integerGrid[row][col] = intGrid[row][col];
+            }
+        }
 
-        List<Integer[]> intGridList = new ArrayList<Integer[]>(Arrays.asList(intGrid));
-//        System.out.println("Current grid size: " + intGridList.size());
+        List<Integer[]> intGridList = new ArrayList<Integer[]>(Arrays.asList(integerGrid));
+    //        System.out.println("Current grid size: " + intGridList.size());
         for (int i = 0; i<intGridList.size(); i++){
             for (int y = i+1; y< intGridList.size(); y++){
                 if(Arrays.equals(intGridList.get(i), intGridList.get(y))){
@@ -39,12 +46,12 @@ public class Grids{
                 }
             }
         }
-//        System.out.println("New grid size: " + intGridList.size());
+    //        System.out.println("New grid size: " + intGridList.size());
         int[][] resultGrid = new int[intGridList.size()][];
         for (int i = 0; i<resultGrid.length; i++){
             resultGrid[i] = new int[intGridList.get(i).length];
             for (int y = 0; y<resultGrid[i].length;y++){
-//                printIntArr(intList, ", ");
+    //                printIntArr(intList, ", ");
                 resultGrid[i][y] = intGridList.get(i)[y].intValue();
             }
         }

@@ -72,8 +72,15 @@ public static class intListAlgos
         }
     }
 
-    public Integer[][] getAllPerms()
+    public int[][] getAllPerms()
     {
-        return allPerms;
+    int[][] allPermInts = new int[allPerms.length][];
+        for (int row = 0; row<allPermInts.length; row++){
+            allPermInts[row] = new int[allPerms[row].length];
+            for (int col = 0; col < allPermInts[row].length; col++){
+                allPermInts[row][col] = allPerms[row][col].intValue();
+            }
+        }
+        return allPermInts;
     }
 }

@@ -56,10 +56,26 @@ public class random
         printGridInteger(testGridInteger);
         System.out.println("the Integer Array works");
         System.out.println("------------------------------------------------------");
-        testGrid = removeAllRepeats(testGridInteger);
+        testGrid = removeAllRepeats(testGrid);
         printGrid(testGrid);
         System.out.println("hopefully the third grid has no repeats");
+
+
+
+
+//        int[] combinationTest = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+//        int[][] allCombos = combinations(4, combinationTest);
+//
+//        printGrid(allCombos);
     }
+
+
+
+
+
+
+
+
 
     public static boolean isLetter(String thing)
     {
@@ -217,25 +233,7 @@ public class random
     }
 
 
-    public static String doubleToFraction(double num){
-//        System.out.println(num);
-        String numString = Double.toString(num);
-        double numDecimals = Double.valueOf(numString.length() - numString.indexOf(".")-1);
-        int denominator = (int) Math.pow(10, numDecimals);
-        int numerator = (int) (num*denominator);
-//        System.out.println(numerator + "/" + denominator);
-        int GCM = greatestCommonFactor(numerator, denominator);
-        while (GCM!=1){
-            numerator /= GCM;
-            denominator /= GCM;
-            GCM = greatestCommonFactor(numerator, denominator);
-        }
-        if (denominator == 1){
-            return String.valueOf(numerator);
-        } else {
-            return numerator + "/" + denominator;
-        }
-    }
+
 
 
     public static class Delimiters {
@@ -363,10 +361,17 @@ public class random
 
 
 
-    public static int[][] removeAllRepeats(Integer[][] intGrid)
+    public static int[][] removeAllRepeats(int[][] intGrid)
     {
+        Integer[][] integerGrid = new Integer[intGrid.length][];
+        for (int row = 0; row<integerGrid.length; row++){
+            integerGrid[row] = new Integer[intGrid[row].length];
+            for (int col = 0; col < integerGrid[row].length; col++){
+                integerGrid[row][col] = intGrid[row][col];
+            }
+        }
 
-        List<Integer[]> intGridList = new ArrayList<Integer[]>(Arrays.asList(intGrid));
+        List<Integer[]> intGridList = new ArrayList<Integer[]>(Arrays.asList(integerGrid));
 //        System.out.println("Current grid size: " + intGridList.size());
         for (int i = 0; i<intGridList.size(); i++){
             for (int y = i+1; y< intGridList.size(); y++){
@@ -388,4 +393,41 @@ public class random
         return resultGrid;
     }
 
+
+    public static long factorial(int n) {
+        long result = 1;
+        for (int i = 2; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+
+
+    public static int[][] combinations(int k, int[] arr) {
+        int n = arr.length;
+        int numCombinations = (int) (factorial(n) / (factorial(k) * factorial(n - k)));
+        int[][] result = new int[numCombinations][k];
+        int[] indices = new int[k];
+
+        for (int i = 0; i < k; i++) {
+            indices[i] = i;
+            result[0][i] = arr[i];
+        }
+
+        for (int i = 1; i < numCombinations; i++) {
+            int j = k - 1;
+            while (j >= 0 && indices[j] == n - k + j) {
+                j--;
+            }
+            indices[j]++;
+            for (int l = j + 1; l < k; l++) {
+                indices[l] = indices[l - 1] + 1;
+            }
+            for (int l = 0; l < k; l++) {
+                result[i][l] = arr[indices[l]];
+            }
+        }
+
+        return result;
+    }
 }
